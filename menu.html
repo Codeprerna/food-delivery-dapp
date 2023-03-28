@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="food.css">
+    
+    <title>Document</title>
+</head>
+<body class="menu">
+    <head>
+        <div id="logo">
+            <img src="logo.svg" class="" alt="" width="500" height="180">
+        </div>
+        <div class="nav">
+            <ul class="buttons">
+                <a href="menu.html"><li >Menu</li></a>
+                <a hreg=""><li >Book</li></a>
+                <a href=""><li > About us</li>  </a>
+                <a href="contact.html"><li >Contact us</li></a>
+                
+                
+            </ul>
+        </div>
+        
+    </head>
+    <main>
+        <article>
+            <section class="columns-desktop">
+                <div class="food">
+                  <img src="https://fitelo.co/wp-content/uploads/elementor/thumbs/Pav-Bhaji-1-p10mrpsol6m0k06409eo26o7t99l954hcfm9lpf18w.jpg" alt="" width="150px" height="150px">
+                  <div class="column">
+                      <div class="title">Pav Bhaji</div>
+                      <div class="price">Rs.180</div>
+                  </div>
+                  <button data-order="pav bhaji">Order</button>
+                </div>
+                
+                <div class="food">
+                    <img src="https://th.bing.com/th/id/OIP.0UWnU_HJ0V1PFn8Y3DgMzQHaHa?pid=ImgDet&rs=1" alt="" width="150px" height="150px">
+                    <div class="column">
+                        <div class="title">Masala Dosa</div>
+                        <div class="price">Rs.150</div>
+                    </div>
+                    <button data-order="masala dosa">Order</button>
+                </div>
+                
+                <div class="food">
+                    <img src="https://www.chefatlarge.in/wp-content/uploads/2012/09/Dal-Makhani.jpg" alt="" width="150px" height="150px">
+                    <div class="column">
+                        <div class="title">Dal Makhani</div>
+                        <div class="price">Rs.200</div>
+                    </div>
+                    <button data-order="dal makhani">Order</button>
+                </div>
+                
+                <div class="food">
+                    <img src="https://www.thespruceeats.com/thmb/xBQBneVqWIac9DB40IwhNyhTKRc=/2812x1869/filters:fill(auto,1)/Pepperonipizzahoriz-3d53b00a7cce429eae3bfb629df356ec.jpg" alt="" width="150px" height="150px">
+                    <div class="column">
+                        <div class="title">Pizza</div>
+                        <div class="price">Rs.100</div>
+                    </div>
+                    <button data-order="pizza">Order</button>
+                </div>
+                
+                <div class="food">
+                    <img src="https://th.bing.com/th/id/OIP.K-IwXpmp5RAcywLKZk82LAHaE3?pid=ImgDet&rs=1" alt="" width="150px" height="150px">
+                    <div class="column">
+                        <div class="title">Noodles</div>
+                        <div class="price">Rs.200</div>
+                    </div>
+                    <button data-order="nnoodles">Order</button>
+
+                </div>
+                
+                      
+                    
+                
+                </div>
+          </section>
+        </article>
+    </main>
+    <script>
+        window.addEventListener("DOMContentLoaded",function(e){
+            const orderbuttons=document.querySelectorAll("button[data-order]");
+            orderbuttons.forEach(function(button){
+                button.addEventListener("click",function(e) {
+                    const button = e.currentTarget;
+                    const container=button.parentNode;
+                    const order={
+                        id: button.getAttribute("data-order"),
+                        title: container.querySelector(".title").innerText,
+                        price: container.querySelector(".price").innerText
+                    };
+                    localStorage.setItem("order",JSON.stringify(order));
+                    const url=window.location.href.replace("menu.html","order.html");
+                    window.location.href=url;
+                });
+            });
+        });
+
+                
+    </script>
+</body>
+</html>

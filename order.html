@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="food.css">
+    <script src="food.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <div id="logo">
+            <img src="logo.svg" class="" alt="" width="500" height="180">
+        </div>
+        <div class="nav">
+            <ul class="buttons" id="">
+                <a href="menu.html" id=""><li >Menu</li></a>
+                <a href=""><li >Book</li></a>
+                <a href=""><li > About us</li>  </a>
+                <a href="contact.html"><li >Contact us</li></a>
+                
+                
+            </ul>
+        </div>
+        
+    </head>
+    <main>
+        <h1 id="order">Order</h1>
+        <div class="food">
+            <img src=""/>
+            <div class="columns">
+                <div class="title"></div>
+                <div class="price"></div>
+            </div>
+    <form action="http://localhost:7071/api/post" method="POST" id="form">
+        <div class="input-group">
+            <div><label for="first-name">First Name</label></div>
+            <div><input type="text" name="first-name" id="first-name"></div>
+
+        </div>
+        <div class="input-group">
+            <div><label for="last-name">Last Name</label></div>
+            <div><input type="text" name="last-name" id="last-name"></div>
+
+        </div>
+        <div class="input-group">
+            <div><label for="address">Address</label></div>
+            <div><input type="text" name="address" id="address"></div>
+
+        </div>
+        <div class="input-group">
+            <div><label for="state">State</label></div>
+            <div>
+                <select name="state" id="state">
+                    <option value=""selected>[Select One]  </option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Punjab">Punjab</option>
+                </select>
+                
+            </div>
+
+        </div>
+        <div class="input-group">
+            <div><label for="postal-code">Postal Code</label></div>
+            <div><input type="text" name="postal-code" id="postal-code"></div>
+
+        </div>
+        <div class="input-group">
+            <div><label for="comments">Comments</label></div>
+            <div>
+                <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+            </div>
+
+        </div>
+        <input type="reset" value="Reset"/>
+        <input type="submit" value="Order"/>
+    </form>
+    </main>
+
+</body>
+
+<script>
+    window.addEventListener("DOMContentLoaded",function(e){
+        const order = localStorage.getItem("order");
+        if(order){
+            const foodOrder=JSON.parse(order);
+            const food=document.querySelector(".food");
+            const title=food.querySelector(".title");
+            const price=food.querySelector(".price");
+            title.innerText=foodOrder.title;
+            price.innerText=foodOrder.price;
+
+            const img=food.querySelector("img");
+            img.setAttribute("src",`images/${foodOrder.id}.jpg`);
+            img.setAttribute("alt",foodOrder.title);
+
+           
+            
+    
+        }
+    });
+</script>
+</html>
